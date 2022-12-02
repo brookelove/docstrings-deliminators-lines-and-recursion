@@ -20,8 +20,9 @@ def consonant_counter():
 
 
 def vc_counter(filename):
-    return filename
-
+    for lines in filename:
+        print(lines)
+    return lines
 
 # def get_file_input():
 #     done = False
@@ -35,13 +36,13 @@ def read_file():
     while True:
         file_input = input("Enter a text file: ")
         try:
-            with open(file_input, "r") as f:  # with function automatically closes file
-                for lines in vc_counter(f):
-                    print(lines)
+            # with function automatically closes file
+            with open(f"{file_input}.txt", "r") as f:
+                vc_counter(f)
                 break
                 # complete = True
         except FileNotFoundError as e:
-            print("Could not find file: ", e)
+            print("Could not find file, please try again: ", e)
             continue
             # raise FileNotFoundError
 
