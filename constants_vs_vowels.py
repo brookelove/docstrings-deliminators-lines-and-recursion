@@ -11,20 +11,29 @@ sentence_lst = []
 
 def vowel_counter(line):
     # counts the letter of consonants and put in in the dictionary
-    print(line)
+    # print(line) # prints uppercase line
+    for letter in line:
+        # print(letter)
+        if letter in VOWELS:
+            v_lst.append(letter)
     # pass
 
 
 def consonant_counter(line):
-    print(line)
-    # relies on the counter wil be raising errors
-    #  pass
+    # print(line) #prints uppercase line
+    for letter in line:
+        if letter not in VOWELS and letter not in string.punctuation and letter not in string.digits:
+            c_lst.append(letter)
+        # print(letter)  # prints uppercase letter
+        # relies on the counter wil be raising errors
+        #  pass
 
 
 def vc_counter(filename):
     for lines in filename:
-        vowel_counter(lines)
-        consonant_counter(lines)
+        upper_lines = lines.upper()  # converts line to uppercase
+        vowel_counter(upper_lines)
+        consonant_counter(upper_lines)
 
 # def get_file_input():
 #     done = False
@@ -41,8 +50,6 @@ def read_file():
             # with function automatically closes file
             with open(f"{file_input}.txt", "r") as f:
                 vc_counter(f)
-            print(f"Total # of vowels in the text file: {v_lst}")
-            print(f"Total # of consonants in text file: {c_lst}")
             break
             # complete = True
         except FileNotFoundError as e:
@@ -52,3 +59,9 @@ def read_file():
 
 
 read_file()
+vowel_num = "{:,}".format(len(v_lst))
+consonant_num = "{:,}".format(len(c_lst))
+print(c_lst)
+print(v_lst)
+print(f"Total # of vowels in the text file: {vowel_num}")
+print(f"Total # of consonants in text file: {consonant_num}")
