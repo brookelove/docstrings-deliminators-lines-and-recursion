@@ -1,10 +1,12 @@
 import string
-sentence = "Was it a rat I saw?"
-count_dict = {}
+import operator
+sentence = "Wwwas iiit a rat I saw?"
 
 
 def letter_count(str):
-    count = 0
+    # count = 1
+    count_dict = {}
+    '''Counts the frequency of letters in a sentence and returns it as a dictonary'''
     uppercase = str.upper()
     # print(uppercase) # prints string in uppercase
     for letter in uppercase:
@@ -33,11 +35,33 @@ def letter_count(str):
         #     count = 0
         sorted_dict = dict(sorted(count_dict.items()))
 
-    return print(sorted_dict)
+    return sorted_dict
 
 
-def most_common_letter():
-    pass
+def most_common_letter(str):
+    common_lst = []
+    lett_lst = []
+    sorted_dict = letter_count(str)
+    # print(sorted_dict)  # letters sort
+    sort_by_value = sorted(sorted_dict.items(), key=operator.itemgetter(1))
+    #value_dict = dict(sort_by_values)
+    # print(value_dict)  # returns the information as a dictionary
+    # print(sort_by_values[-1])  # getrs last tuple in list
+    sort = sort_by_value.pop(-1)
+    # print(sort)
+    common_lst.append(sort)
+    # print(sort_by_value[-1][1])  # gets last element in the list of tuples
+
+    for i in sort_by_value:
+        # print(i[1])
+        if i[1] == sort_by_value[-1][1]:
+            # print(i) # prints tuple
+            common_lst.append(i)
+    for i in range(len(common_lst)):
+        # print(common_lst[i][0]) # letters
+        lett_lst.append(common_lst[i][0])
+    lett_lst.append(sort_by_value[-1][1])
+    return lett_lst
 
 
 def string_count_histogram():
@@ -50,6 +74,7 @@ def results():
 
 def get_sentence():
     letter_count(sentence)
+    most_common_letter(sentence)
 
 
 get_sentence()
