@@ -10,6 +10,7 @@ sentence_lst = []
 
 
 def vowel_counter(line):
+    '''loops through letters in a read line to append vowels to v_lst in the current line'''
     # counts the letter of consonants and put in in the dictionary
     # print(line) # prints uppercase line
     for letter in line:
@@ -20,6 +21,7 @@ def vowel_counter(line):
 
 
 def consonant_counter(line):
+    '''loops through letters in a read line to append consonants to c_lst in the current line'''
     # print(line) #prints uppercase line
     for letter in line:
         if letter not in VOWELS and letter not in string.punctuation and letter not in string.digits:
@@ -30,6 +32,7 @@ def consonant_counter(line):
 
 
 def vc_counter(filename):
+    '''loops through lines in letter, creates them to be uppercase and passes lines into two functions'''
     for lines in filename:
         upper_lines = lines.upper()  # converts line to uppercase
         vowel_counter(upper_lines)
@@ -44,6 +47,7 @@ def vc_counter(filename):
 def read_file():
     # main function where the try and catch that will read the file and try to run vc_counter function
     # complete = False
+    '''tries to ask user input to get the correct name of a text file on a loop'''
     while True:
         file_input = input("Enter the name of a text file: ")
         try:
@@ -59,8 +63,8 @@ def read_file():
 
 
 read_file()
-vowel_num = "{:,}".format(len(v_lst))
-consonant_num = "{:,}".format(len(c_lst))
+vowel_num = "{:,.}".format(len(v_lst))
+consonant_num = "{:,.}".format(len(c_lst))
 print(c_lst)
 print(v_lst)
 print(f"Total # of vowels in the text file: {vowel_num}")
