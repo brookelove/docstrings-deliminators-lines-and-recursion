@@ -39,6 +39,7 @@ def letter_count(str):
 
 
 def most_common_letter(str):
+    '''sorts dictionary by values and appends the most common value to a list'''
     common_lst = []
     lett_lst = []
     sorted_dict = letter_count(str)
@@ -64,8 +65,34 @@ def most_common_letter(str):
     return lett_lst
 
 
-def string_count_histogram():
-    pass
+def string_count_histogram(str):
+    sorted_dict = letter_count(str)
+    letter_lst = []
+    letter_tup = ()
+    # print(sorted_dict) # prints sorted lst
+    # for i in sorted_dict:
+    #     # print(sorted_dict.get(i))
+    #     num_lst.append(sorted_dict.get(i))
+    # print(num_lst)
+    # for i in num_lst:
+    #     # print(i)
+    #     for j in range(i):
+    #         print(sorted_dic)
+    for i in sorted_dict:
+        # print(i)
+        num = sorted_dict.get(i)
+        # num = sorted_dict[i].values()
+        # print(num)
+        for j in range(num):
+            # print(i)
+           # letter_tup = letter_tup + (i,)
+            letter_lst.append(i)
+        #letter_tup = ()
+    # print(letter_lst)  # prints list of tuples
+    return letter_lst
+    # print(list(sorted_dict)[i])  # returns the values
+    # for j in range(sorted_dict.get(i)):
+    #     print(list(sorted_dict))
 
 
 def results():
@@ -75,6 +102,7 @@ def results():
 def get_sentence():
     letter_count(sentence)
     most_common_letter(sentence)
+    string_count_histogram(sentence)
 
 
 get_sentence()
